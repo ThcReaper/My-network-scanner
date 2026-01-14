@@ -13,7 +13,6 @@ arp = ARP(pdst=target_ip)
 
 ether = Ether(dst="ff:ff:ff:ff:ff:ff")
 
-# stack them
 
 packet = ether/arp
 
@@ -23,10 +22,11 @@ clients = []
 
 
 for sent,received in result:
-	# for each response, append ip andmac address to clients lists
+
 	clients.append({'ip': received.psrc, 'mac': received.hwsrc})
 
 print('Available devicesin the network:')
 print("IP" + " "*18+"MAC")
 for client in clients:
 	print("{:16} {}".format(client['ip'], client['mac']))
+
